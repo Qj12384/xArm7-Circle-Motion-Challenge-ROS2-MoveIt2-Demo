@@ -1,7 +1,7 @@
 # xArm7-Circle-Motion-Challenge-ROS2-MoveIt2-Demo
 
 This package integrates a custom circular trajectory execution node with the `xarm_ros2` MoveIt 2 configuration. It provides an interactive way to trigger complex autonomous behaviors directly from the RViz graphical interface.
-
+![Demo of my project](./xarm7-Demo.gif)
 ## Table of Contents
 1. [Architecture Overview](#architecture-overview)
 2. [For Beginners: Understanding the Basics](#for-beginners-understanding-the-basics)

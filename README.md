@@ -19,16 +19,16 @@ The system relies on two primary components:
 
 ## For Beginners: Understanding the Basics
 
-If you are new to ROS 2 and MoveIt 2, this package demonstrates several foundational concepts:
+If new to ROS 2 and MoveIt 2, this package demonstrates several foundational concepts:
 
 ### 1. ROS 2 Nodes and Topics
-The `circle_node.py` is a classic ROS 2 **Node**. It uses a **Subscriber** to listen to the `/joint_states` topic. Think of a topic like a continuous radio broadcast; the robot state publisher constantly broadcasts where the robot's joints are, and our node tunes in to listen.
+The `circle_node.py` is a classic ROS 2 **Node**. It uses a **Subscriber** to listen to the `/joint_states` topic. Think of a topic like a continuous radio broadcast; the robot state publisher constantly broadcasts where the robot's joints are, and  node tunes in to listen.
 
 ### 2. MoveIt 2 and RViz
-MoveIt 2 is the brain that calculates how the robot arm should move without hitting itself. **RViz** is the 3D visualizer. When you see the robot moving on your screen, RViz is rendering the joint states calculated by MoveIt.
+MoveIt 2 is the brain that calculates how the robot arm should move without hitting itself. **RViz** is the 3D visualizer. When see the robot moving on screen, RViz is rendering the joint states calculated by MoveIt.
 
 ### 3. The "Trigger" Mechanism
-Because RViz's MoveIt panel does not easily accept custom UI buttons, we use a clever workaround. We created a named pose (a saved position) called `circle`. You use RViz to tell the robot to move to the `circle` pose. Our Python node is constantly checking the robot's position. When it sees the robot arrive at the `circle` pose, it waits 2 seconds and then takes over, telling the robot to start spinning in a circle.
+Because RViz's MoveIt panel does not easily accept custom UI buttons, use a clever workaround. Created a named pose (a saved position) called `circle`. Use RViz to tell the robot to move to the `circle` pose. Python node is constantly checking the robot's position. When it sees the robot arrive at the `circle` pose, it waits 2 seconds and then takes over, telling the robot to start spinning in a circle.
 
 ---
 
@@ -37,7 +37,7 @@ Because RViz's MoveIt panel does not easily accept custom UI buttons, we use a c
 For experienced roboticists, this package resolves common friction points encountered when dealing with non-standard OEM configurations (like UFactory's `xarm_ros2` package) in ROS 2.
 2. Prerequisites & Skills Matrix
 
-LevelRequired KnowledgeSkills You Will PracticeBeginnerROS2 basics (nodes, topics, launch files)Subscribing, timers, action clientsBasic Python & YAMLParameter declarationIntermediateMoveIt2 concepts (planning scene, SRDF, OMPL)Trajectory messages, fake controller managerRViz visualizationGoal state selectionSeniorxacro processing, action feedback callbacks, numpy trajectory mathSRDF runtime patching, custom action handling
+LevelRequired KnowledgeSkills Will PracticeBeginnerROS2 basics (nodes, topics, launch files)Subscribing, timers, action clientsBasic Python & YAMLParameter declarationIntermediateMoveIt2 concepts (planning scene, SRDF, OMPL)Trajectory messages, fake controller managerRViz visualizationGoal state selectionSeniorxacro processing, action feedback callbacks, numpy trajectory mathSRDF runtime patching, custom action handling
 ROS2 Concepts Covered:
 
 rclpy.node.Node, subscriptions, timers, parameters
@@ -63,7 +63,7 @@ Launch File Magic (start.launch.py)
 Loads official xArm URDF/SRDF
 Injects a new “circle” pose directly into the SRDF XML at runtime (no need to edit vendor files)
 Starts MoveIt move_group with fake controllers so everything runs in simulation
-Launches our circle_motion_controller
+Launches circle_motion_controller
 
 Circle Node Logic (circle_node.py)
 Listens to /joint_states
@@ -72,7 +72,7 @@ Builds a 120-point sine/cosine trajectory in real time
 Sends it via /execute_trajectory action (same action MoveIt uses internally)
 
 Why it feels magical
-You never call moveit_commander or plan()
+Never call moveit_commander or plan()
 The robot “knows” its own pose from RViz selection
 
 
@@ -100,7 +100,7 @@ Full result/error code handling
 Parameterized radius, duration, point count → easy tuning without code change
 
 Fake Controller Integration
-The fake_controllers.yaml + moveit_fake_controller_manager lets you run full MoveIt pipeline without real hardware – perfect for CI/CD and teaching.
+The fake_controllers.yaml + moveit_fake_controller_manager lets run full MoveIt pipeline without real hardware – perfect for CI/CD and teaching.
 
 5. Customization & Advanced Features
 Easy tweaks (no code change):
@@ -116,7 +116,7 @@ Publish marker array showing the intended circle path in RViz
 
 Skill Upgrades:
 
-Learn how to write your own MoveGroupInterface plugin
+To write own MoveGroupInterface plugin
 Master JointTrajectoryController for real xArm hardware
 Understand planning_scene_monitor and collision checking
 

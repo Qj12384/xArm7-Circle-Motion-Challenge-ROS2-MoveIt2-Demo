@@ -93,8 +93,6 @@ Pythonp.positions = [
 Joint 7 position = t (0 → 2π) works because the fake controller ignores joint limits for continuous joints.
 120 points + linear time interpolation = buttery-smooth motion at 10 s duration.
 
-Action Client Best Practices (new in refined version)
-
 send_goal_async + add_done_callback
 Full result/error code handling
 Parameterized radius, duration, point count → easy tuning without code change

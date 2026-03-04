@@ -124,7 +124,7 @@ Understand planning_scene_monitor and collision checking
 6. Troubleshooting
 IssueSolution“circle” state missing in RVizRebuild after launch file changesAction server timeoutCheck move_group is running (look for “Planning pipeline” in terminal)Jerky motionIncrease points parameterJoint 7 wraps incorrectly on real hardwareAdd continuous: true in URDF joint7
 
-### 1. Dynamic SRDF Injection
+  Dynamic SRDF Injection
 MoveIt's UI reads saved states from the Semantic Robot Description Format (SRDF). Standard practice requires modifying the OEM's XML files directly, which is bad for version control and updates. Instead, `start.launch.py` uses python string manipulation to dynamically inject a `<group_state>` into the compiled SRDF at runtime:
 ```python
 patched_srdf = srdf_xml.replace('</robot>', custom_goal_states + '</robot>')

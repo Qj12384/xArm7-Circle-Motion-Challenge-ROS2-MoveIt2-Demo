@@ -41,9 +41,13 @@ MoveIt's UI reads saved states from the Semantic Robot Description Format (SRDF)
 ```python
 patched_srdf = srdf_xml.replace('</robot>', custom_goal_states + '</robot>')
 This ensures the custom pose appears natively in the RViz MotionPlanning Qt panel without touching the upstream source.2. Bypassing MoveItConfigsBuilderThe standard MoveItConfigsBuilder assumes a strict directory structure (e.g., config/kinematics.yaml). The xarm package nests these under config/xarm7/. Instead of failing out, the launch file utilizes a custom load_yaml and process_xacro pipeline to explicitly map the nested configurations to MoveIt's required parameter dictionaries (e.g., robot_description_kinematics).3. Action Client Trajectory ExecutionPublishing directly to a fake controller's JointTrajectory topic often results in dropped messages or lack of visualization in RViz. To guarantee execution and visualization, circle_node.py acts as an Action Client to /execute_trajectory.4. Trajectory Generation MathThe trajectory bypasses Cartesian IK planning to avoid singularities, instead operating purely in Joint Space. By modulating joints 4, 5, and 6 with sine/cosine waves while sweeping joint 7 from $0$ to $2\pi$, we create an end-effector path that mimics a spatial circle:$J_4(t) = 0.7 + 0.3 \cos(t)$$J_5(t) = 0.4 \sin(t)$$J_6(t) = 1.1 + 0.3 \sin(t)$
+
 ---
 
-## How to RunBuild the workspace:Bashcd ~/dev_ws
+## How to RunBuild
+
+
+ the workspace:Bashcd ~/dev_ws
 colcon build --packages-select avatar_challenge
 Source the setup script:Bashsource install/setup.bash
 Launch the environment:Bashros2 launch avatar_challenge start.launch.py

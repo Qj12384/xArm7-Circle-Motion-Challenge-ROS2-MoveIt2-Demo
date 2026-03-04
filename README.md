@@ -73,7 +73,7 @@ Sends it via /execute_trajectory action (same action MoveIt uses internally)
 
 Why it feels magical
 Never call moveit_commander or plan()
-The robot “knows” its own pose from RViz selection
+The robot “knows” its own pose from RViz selection.
 
 
 
